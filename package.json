@@ -11,8 +11,10 @@
     "express": "^4.16.4",
     "express-session": "^1.16.1",
     "express-subdomain": "^1.0.5",
+    "jimp": "^0.14.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.5.2",
+    "node-fetch": "^2.6.0",
     "rss-parser": "^3.9.0"
   },
   "devDependencies": {},

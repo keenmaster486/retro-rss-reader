@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const rssParser = require('rss-parser');
 
+
 const parser = new rssParser();
 
 const User = require('../../models/userSchema');
@@ -29,6 +30,45 @@ parseFeeds = async (feeds) => {
 		return newItems;
 	});
 };
+
+parseContent = (content) => {
+	
+	content = fixEncoding(content);
+
+	// change img sources to local converter
+	while (content.indexOf('src="http') != -1) {
+		for (let i = 0; i < content.length; i++) {
+			if (content.substring(i, i + 9) == 'src="http') {
+				let url = '';
+				for (let j = i + 5; j < content.length; j++) {
+					if (content[j] == '"') {
+						url = content.substring(i + 5, j);
+						console.log(url);
+						const newUrl = url.replace(/\//g, '%2F');
+						console.log(newUrl);
+						content = content.replace('<img src="' + url + '"/>',
+							'<a href="/shims/img/orig/' + newUrl + '"><img src="/shims/img/small/' + newUrl + '"></a>');
+						content = content.replace('<img src="' + url + '">',
+							'<a href="/shims/img/orig/' + newUrl + '"><img src="/shims/img/small/' + newUrl + '"/></a>');
+						content = content.replace('src="' + url + '"',
+							'src="/shims/img/small/' + newUrl + '"');
+						break;
+					}
+				}
+			}
+		}
+	}
+	return content;
+};
+
+fixEncoding = (str) => {
+	str = str.replace(/“/g, '"');
+	str = str.replace(/”/g, '"');
+	str = str.replace(/‘/g, '\'');
+	str = str.replace(/’/g, '\'');
+
+	return str;
+}
 
 router.get('/', (req, res) => {
 	console.log('GET /feeds');
@@ -68,6 +108,12 @@ router.get('/page/:index', (req, res) => {
 				//I HATE JS ASYNC
 
 				items.sort((a, b) => (a.isoDate < b.isoDate) ? 1 : -1);
+
+				items.forEach((item) => {
+					item.content = parseContent(item.content);
+					item.title = fixEncoding(item.title);
+					// console.log(item.content);
+				});
 
 				const pageSize = 10;
 

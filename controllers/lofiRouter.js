@@ -5,6 +5,7 @@ const userController = require('./main/userController');
 const authController = require('./main/authController');
 const homeController = require('./main/homeController');
 const feedController = require('./main/feedController');
+const shimController = require('./main/shimController');
 
 
 //Special route for home page:
@@ -41,5 +42,12 @@ router.use('/feeds', function(req, res, next)
 	req.viewdir = 'lofi';
 	next();
 }, feedController);
+
+router.use('/shims', function(req, res, next)
+{
+	req.viewdir = 'lofi';
+	next();
+}, shimController);
+
 
 module.exports = router;
