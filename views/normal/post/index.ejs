@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>All The Posts</title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+	<%	include ../partials/csslinks	%>
+</head>
+<body>
+
+	<% include ../partials/navbar %>
+	<br><br><br><br>
+	<h1>All The Posts</h1>
+	<hr>
+
+	<div class="container">
+	  <!-- Example row of columns -->
+
+	  <%	let rows = Math.ceil(posts.length / 3);			%>
+	  <%	let cur = null;									%>
+	  <%	for (let r = 0; r < rows; r++) {				%>
+	  			<div class="row">
+	  <%		for (let c = 0; c < 3; c++)	{				%>
+	  <%			cur = posts.length - 1 - (r*3) - c			%>
+	  				<div class="col-md-4">
+	  <%				if (cur >= 0) {						%>
+	  						<h3><%=posts[cur].title%></h3>
+	  						<p><i>Author: <%=posts[cur].authorName%>
+	  						
+	  						<%	if (posts[cur].userId === session.curuserid) {	%>
+								<b>(your post)</b>
+							<%	}												%>
+								</i></p>
+	  						<p><a class="btn btn-default" href="/posts/<%=posts[cur]._id%>" role="button">View Post &raquo;</a></p>
+	  <%				}									%>
+	  				
+	  				</div>
+	  <%		}											%>
+	  			</div>
+	  <%	}												%>
+
+
+
+	<%	include ../partials/jslinks	%>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+	<%	include ../partials/csslinks	%>
+</head>
+<body>
+
+	<% include ../partials/navbar %>
+	
+
+	<br><br><br><br>
+
+	<div class="container">
+		<hr>
+
+		<h2>Editing Account Settings for <%=user.username%></h2>
+
+		<form action="/users/<%=user._id%>?_method=PUT" method="POST">
+			Your username (unique, non-case-sensitive, should be all lowercase):<br>
+			<input type="text" name="username" value="<%=user.username%>"></input><br>
+			Your email address (must be a valid email address):<br>
+			<input type="email" name="email" value="<%=user.email%>"></input><br>
+			Your name (this will be the name that is displayed on your profile page):<br>
+			<input type="text" name="displayname" value="<%=user.displayname%>"></input><br>
+			<button type="submit">Submit</button><br>
+		</form>
+
+		<form action="/auth/delete" method="GET">
+			The following button will take you to a page where you can delete your account:
+			<button type="submit">Delete your account</button><br>
+		</form>
+
+
+
+		<a href="/">Back to home</a>
+	</div>
+
+
+	<%	include ../partials/jslinks	%>
+
+</body>
+</html>

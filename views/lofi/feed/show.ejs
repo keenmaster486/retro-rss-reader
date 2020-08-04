@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%=post.title%></title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<%	include ../partials/header	%>
+	<%	include ../partials/menu	%>
+
+	<hr>
+
+	<font face="Courier New, monospace">
+		<h2><%=post.title%></h2>
+	</font>
+	<font face="fixedsys, monospace">
+		<p>Author: <a href="/users/<%=user._id%>"><%=user.displayname%> (@<%=user.username%>)</a></p>
+	</font>
+
+	<font size="-1">
+		Date: <%=post.date%>
+	</font>
+
+	<hr>
+
+	<br>
+
+	<table border=1 cellspacing=5 cellpadding=25>
+		<tr>
+		<td>
+			<font face="garamond, times, serif"><%-post.text%></font>
+		</td>
+	</table>
+	
+	<br>
+
+
+	<%if (session.curuserid == user._id) {%>
+		<hr>
+		
+		<p>This is your post!</p>
+		<a href="/posts/<%=post._id%>/edit">Edit this post</a><br>
+		<br>
+		<a href="/posts/<%=post._id%>/delete">Delete this post</a>
+	<%}%>
+
+	<%if (session.curuserid != user._id && session.curuseradmin === true) {%>
+		<br><br>
+		<hr>
+		<p>This is not your post, but you are an administrator!</p>
+		<a href="/posts/<%=post._id%>/edit">Edit this post</a><br>
+		<br>
+		<a href="/posts/<%=post._id%>/delete">Delete this post</a>
+	<%}%>
+
+
+
+	<hr>
+
+
+
+	<font size="+1">Comments:</font><br>
+
+	<!-- The comments section is below! -->
+
+	<br>
+
+	<table border=1 cellspacing=1 cellpadding=5>
+
+		<% for (let i = 0; i < post.comments.length; i++) {%>
+
+				<tr>
+				<td>
+					<%=post.comments[i].userdisplayname%><br>
+					<font size="-1" face="Courier New, monospace"><i>@<%=post.comments[i].username%></i></font>
+					<br>
+					<font size="-2"><%=post.comments[i].date%></font>
+				</td>
+				<td>
+					<%=post.comments[i].text%>
+					<%if (session.logged && session.curuserid == post.comments[i].userId) {%>
+						<form action="/posts/<%=post._id%>/comments/<%=i%>?_method=DELETE" method="POST">
+							<input type="hidden" value="<%=post.comments[i].date%>" name="thisCommentDate"></input>
+							<input type="submit" value="Delete"></input>
+						</form>
+					<%}%>
+				</td>
+
+		<%}%>
+
+	</table>
+
+	<br><br>
+
+	<%if (session.logged) {%>
+		Add a comment:
+
+		<br><br>
+
+		<form action="/posts/<%=post._id%>/addcomment" method="POST">
+			<textarea name="text" rows=5 cols=60>Your comment text here</textarea><br>
+			<input type="submit" value="Submit Comment"></input>
+		</form>
+
+	<%}%>
+
+	<%if (!session.logged){%>
+		Log in to comment on this post!
+	<%}%>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

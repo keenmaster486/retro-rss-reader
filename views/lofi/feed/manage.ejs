@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All Posts</title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<%	include ../partials/header	%>
+	<%	include ../partials/menu	%>
+
+	<hr>
+
+	<a href="/feeds/new">New Feed</a>
+
+	<font face="Courier New, monospace">
+		<h2>Manage Your Feeds</h2>
+	</font>
+
+	<hr>
+
+	<% for (let i = 0; i < feeds.length; i++) { %>
+		<%=feeds[i].title%>
+		<form action="/feeds/<%=feeds[i].id%>?_method=DELETE" method="POST">
+			<input type="submit" value="Delete"></input>
+		</form>
+		<hr>
+	<% } %>
+
+
+<% include ../partials/footer %>
+
+</body>
+</html>

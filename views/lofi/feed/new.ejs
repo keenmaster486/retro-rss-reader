@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Post</title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<%	include ../partials/header	%>
+	<%	include ../partials/menu	%>
+
+	<hr>
+
+	<font face="Courier New, monospace">
+		<h2>Add a new feed</h2>
+	</font>
+
+
+	<font face="fixedsys, chicago, Courier New, monospace">
+		<form action="/feeds" method="POST">
+			Title:<br>
+			<input type="text" name="title" placeholder="Title"></input><br>
+			URL:<br>
+			<input type="text" name="url" placeholder="URL"></input></br>
+			<input type="submit" value="Submit"></input><br>
+		</form>
+	</font>
+
+	<a href="/">Back to home</a>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

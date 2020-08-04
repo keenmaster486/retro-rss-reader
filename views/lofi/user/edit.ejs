@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<%	include ../partials/header	%>
+	<%	include ../partials/menu	%>
+
+	<hr>
+
+	<font face="Courier New, monospace">
+		<h2>Editing Account Settings for <%=user.username%></h2>
+	</font>
+
+	<font face="fixedsys, Chicago, courier, monospace">
+		<form action="/users/<%=user._id%>?_method=PUT" method="POST">
+			Your username (unique, non-case-sensitive, should be all lowercase):<br>
+			<input type="text" name="username" value="<%=user.username%>"></input><br>
+			Your email address (must be a valid email address):<br>
+			<input type="email" name="email" value="<%=user.email%>"></input><br>
+			Your name (this will be the name that is displayed on your profile page):<br>
+			<input type="text" name="displayname" value="<%=user.displayname%>"></input><br>
+			<input type="submit" value="Submit"></input><br>
+		</form>
+
+		<form action="/auth/delete" method="GET">
+			The following button will take you to a page where you can delete your account:
+			<input type="submit" value="Delete your account"></input><br>
+		</form>
+	</font>
+
+
+
+	<a href="/">Back to home</a>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

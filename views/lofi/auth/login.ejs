@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+	<title>Login</title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+	
+	<%	include ../partials/header	%>
+	<%	include ../partials/menu	%>
+
+	<h2><font face="Courier New, monospace">Log In to RetroHub</font></h2>
+
+	<hr>
+
+	<font face="fixedsys, Chicago, courier, monospace">
+		<form action="/auth/login" method="POST">
+			Username:<br>
+			<input type="text" name="username" placeholder="Username"></input><br>
+			<!-- Email:<br>
+			<input type="text" name="email" placeholder="Email"></input><br> -->
+			Password:<br>
+			<input type="password" name="password" placeholder="Password"></input><br>
+			<input type="submit" value="Log In"></input><br>
+		</form>
+	</font>
+
+	<hr>
+
+	<a href="/">Back to index</a>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

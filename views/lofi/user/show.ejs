@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User: <%=user.displayname%></title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<%	include ../partials/header	%>
+	<%	include ../partials/menu	%>
+
+	<hr>
+
+	<font face="Courier New, monospace"><h2><%=user.displayname%></h2></font>
+
+	<hr>
+	
+	<font face="Courier New, monospace">
+		<p><b>
+			Username: <%=user.username%></br>
+			Display name: <%=user.displayname%><br>
+		</b></p>
+	</font>
+
+	<%	if (session.logged && user.username === session.username) {	%>
+			<center>
+				<hr>
+				<font face="Courier New, monospace">
+					<p>
+						<b>This is your space! Make posts and they will appear here.</b>
+					</p>
+					<%	if(user.admin === true) {	%>
+							<p>
+								<b>Welcome, <%=user.username%>. You are an administrator</b>
+							</p>
+					<%	}							%>
+				</font>
+				<font face="Courier New, monospace" size=+1>
+					<b><a href="/posts/new/<%=session.curuserid%>">Make a new post!</a></b>
+				</font>
+			</center>
+	<%	}															%>
+
+	<hr>
+
+	<font face="Courier New, monospace">
+		<p>
+			This user's posts:
+			<%	if (posts.length > 0) {							%>
+			<%		for (let i = 0; i < posts.length; i++) {	%>
+						<h3><a href="/posts/<%=posts[i]._id%>"><%=posts[i].title%></a></h3>
+						<!--<p>--------Author: <%=posts[i].authorName%></p><br>
+						<br>-->
+			<%		}											%>
+			<%	}												%>
+		</p>
+	</font>
+
+
+	<hr>
+
+
+	<a href="/users">Back to user index</a><br>
+	<a href="/">Back to home</a>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

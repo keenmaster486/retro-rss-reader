@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Delete post <%=post.title%></title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<h1>Are you sure you want to delete this post?</h1>
+	<h2><%=post.title%></h2>
+
+	<form action="/posts/<%=post._id%>?_method=DELETE" method="POST">
+		<input type="submit" value="Delete it!"></input>
+	</form>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

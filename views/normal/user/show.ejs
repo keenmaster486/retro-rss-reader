@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+	<%	include ../partials/csslinks	%>
+</head>
+<body>
+
+	<% include ../partials/navbar %>
+	
+	<br><br><br><br>
+
+	<div class="container">
+		<hr>
+
+		<h2><%=user.displayname%></h2>
+
+		<hr>
+		
+		<p><b>
+			Username: <%=user.username%></br>
+			Display name: <%=user.displayname%><br>
+		</b></p>
+
+		<%	if (session.logged && user.username === session.username) {	%>
+				<hr>
+				<p>
+					<b>This is your space! Make posts and they will appear here.</b>
+				</p>
+
+				<%	if(user.admin === true) {	%>
+						<p>
+							<b>Welcome, <%=user.username%>. You are an administrator</b>
+						</p>
+				<%	}							%>
+
+				<b><a href="/posts/new/<%=session.curuserid%>">Make a new post!</a></b>
+		<%	}															%>
+
+		<hr>
+
+		<p>
+			This user's posts:
+			<%	if (posts.length > 0) {							%>
+			<%		for (let i = 0; i < posts.length; i++) {	%>
+						<h3><a href="/posts/<%=posts[i]._id%>"><%=posts[i].title%></a></h3>
+						<!--<p>--------Author: <%=posts[i].authorName%></p><br>
+						<br>-->
+			<%		}											%>
+			<%	}												%>
+		</p>
+
+
+		<hr>
+
+
+		<a href="/users">Back to user index</a><br>
+		<a href="/">Back to home</a>
+	</div>
+
+
+	<%	include ../partials/jslinks	%>
+
+</body>
+</html>

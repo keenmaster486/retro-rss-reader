@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Delete post <%=post.title%></title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+	<%	include ../partials/csslinks	%>
+</head>
+<body>
+
+		<% include ../partials/navbar %>
+
+<br><br><br><br>
+	<hr>
+
+	<div class="container">
+		<h1>Are you sure you want to delete this post?</h1>
+		<h2><%=post.title%></h2>
+
+		<form action="/posts/<%=post._id%>?_method=DELETE" method="POST">
+			<input type="submit" value="Delete it!"></input>
+		</form>
+	</div>
+
+	<%	include ../partials/jslinks	%>
+
+
+</body>
+</html>

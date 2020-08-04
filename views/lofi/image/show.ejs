@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image</title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<% include ../partials/header %>
+	<% include ../partials/menu %>
+
+	<h2>Image Preview</h2>
+
+	<p>
+		Click to see a larger view
+	</p>
+
+	
+
+	<a href="<%=image.largeUrl%>"><img src="<%=image.smallUrl%>"></a>
+
+	<br><br>
+
+	<p>
+		Tags you can use to add this image to a post:<br>
+		<br>
+		<form>
+			Small (clickable):<br>
+			<br>
+			<textarea readonly rows="1" cols="50">&lta href="<%=image.largeUrl%>"&gt&ltimg src="<%=image.smallUrl%>"&gt&lt/a&gt</textarea><br>
+			<br>
+			Small:<br>
+			<br>
+			<textarea readonly rows="1" cols="50">&ltimg src="<%=image.smallUrl%>"&gt</textarea><br>
+			<br>
+			Large:<br>
+			<br>
+			<textarea readonly rows="1" cols="50">&ltimg src="<%=image.largeUrl%>"&gt</textarea><br>
+		</form>
+	</p>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

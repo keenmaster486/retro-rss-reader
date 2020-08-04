@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Editing post <%=post.title%></title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+
+	<%	include ../partials/header	%>
+	<%	include ../partials/menu	%>
+
+	<hr>
+
+	<font face="Courier New, monospace">
+		<h2>Editing post <%=post.title%></h2>
+	</font>
+	<!-- <p>(all of the following fields are required)</p> -->
+
+	<font face="fixedsys, chicago, Courier New, monospace">
+		<p>
+			This site allows limited BBCode formatting in posts.<br>
+			The following tags are allowed:<br>
+			<br>
+			[b]Bold Text[/b]<br>
+			[i]Italic Text[/i]<br>
+			[u]Underlined Text[/u]<br>
+			[url=http://anywebsite.com]URL link[/url]<br>
+			<br>
+			In addition, newlines are automatically parsed without requiring the use of HTML tags.<br>
+		</p>
+	</font>
+
+	<font face="fixedsys, chicago, Courier New, monospace">
+		<form action="/posts/<%=post._id%>?_method=PUT" method="POST">
+			Title:<br>
+			<input type="text" name="title" placeholder="title" value="<%=post.title%>"></input><br>
+			Type:<br>
+			<select name="type">
+				<option value="Article">Article
+			</select><br><br>
+			Want to upload images to be used in this post? Use the <a href="/images">Your Images</a> section of the site!<br><br>
+			Text body:<br>
+			<textarea name="text" rows=25 cols=75><%=post.text%></textarea><br>
+			<input type="submit" value="Submit"></input><br>
+		</form>
+	</font>
+
+	<a href="/">Back to home</a>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

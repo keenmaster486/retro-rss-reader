@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+	<%	include ../partials/csslinks	%>
+</head>
+<body>
+
+	<% include ../partials/navbar %>
+
+	<br><br><br><br>	
+
+	<div class="container">
+		<hr>
+
+		<h1>User Index</h1>
+
+
+		<hr>
+
+
+		<%	for (let i = 0; i < users.length; i++) {							%>
+				<a href="/users/<%=users[i]._id%>"><%=users[i].username%>
+		<%			if (users[i].username === session.username) {				%>
+						(you)
+		<%			}															%>
+		
+		<%			if (users[i].admin === true) {								%>
+					(admin)
+		<%			}															%>
+		
+				</a><br>
+		<%	}																	%>
+
+		
+
+		<hr>
+
+
+		<a href="/users/new">Create a new user account</a><br>
+		<a href="/">Back to home</a>
+	</div>
+
+
+	<%	include ../partials/jslinks	%>
+
+</body>
+</html>

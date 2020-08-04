@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All Posts</title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<%	include ../partials/header	%>
+	<%	include ../partials/menu	%>
+
+	<hr>
+
+	<font face="Courier New, monospace">
+		<h2>Your Feeds</h2>
+		<a href="/feeds/manage">Manage your feeds</a>
+	</font>
+
+	<hr>
+
+	<% for (let i = start; i <= end; i++) { %>
+		<i><%=items[i].feedTitle%></i><br>
+		<font size="-1"><i><%=items[i].parsedFeedTitle%></i></font>
+		<p>
+			<b><%=items[i].title%><br></b>
+			<i><%=items[i].creator%><br></i>
+			<br>
+			<%-items[i].content%><br>
+		</p>
+		<hr>
+	<% } %>
+
+	<br>
+	Go to page:<br>
+	<table>
+		<tr>
+			<% for (let i = 0; i < pageNum; i++) { %>
+				<!-- This block is messy because Netscape puts an extra space after the numbers otherwise -->
+				<td>
+					<a href="/feeds/page/<%=i%>">
+						<% if (i == currentPage) { %>
+							<b><%=i+1%></b><% } %><% if (i != currentPage) { %><%=i+1%><% } %></a>
+			<% } %>
+	</table>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

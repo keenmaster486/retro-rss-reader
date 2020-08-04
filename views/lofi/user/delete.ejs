@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Delete user <%=user.username%></title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<h1>Delete user <%=user.username%></h1>
+
+	<hr>
+
+	<h1>YOU ARE ABOUT TO DELETE YOUR USER ACCOUNT</h1><br>
+	<h1>ARE YOU SURE YOU WANT TO DO THIS???</h1><br>
+
+	<hr>
+
+	<h2>WARNING: THIS WILL ALSO DELETE ALL OF YOUR POSTS!!!</h2>
+
+	<hr>
+
+	<p>Please enter your password so we're sure you're serious about deleting your user account:</p><br>
+
+	<form action="/auth/delete?_method=DELETE" method="POST">
+		<input type="password" name="password" placeholder="Password"></input><br>
+		<input type="submit" value="DELETE THIS ACCOUNT"></input><br>
+	</form>
+
+	<font size=+1><a href="/">Get me out of here! (go back to home page)</a></font>
+
+
+</body>
+</html>

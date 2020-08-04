@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Your Images</title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<% include ../partials/header %>
+	<% include ../partials/menu %>
+
+	<h2>Your Images</h2>
+	<p>
+		This page contains the images that you have uploaded.
+		Click on an image to see a larger view, and to access
+		links you can use to add an image to a post.
+	</p>
+
+	<h3><a href="/images/upload">Upload a new image</a></h3>
+
+	<br><br>
+
+	<% for (let i = start; i < end; i++) { %>
+		<a href="/images/<%=images[i].urlSafeId%>"><img src="<%=images[i].smallUrl%>"></a>
+	<% } %>
+
+	<br>
+	Go to page:<br>
+	<table>
+		<tr>
+			<% for (let i = 0; i < pageNum; i++) { %>
+				<td><a href="/images/index/<%=i%>"><%=i+1%></a>
+			<% } %>
+	</table>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

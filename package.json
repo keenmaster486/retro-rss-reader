@@ -1,0 +1,33 @@
+{
+  "name": "retro-rss-reader",
+  "version": "1.0.0",
+  "description": "Simple RSS reader for a nice HTML-only experience or retro browsers",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "dotenv": "^8.2.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "express-subdomain": "^1.0.5",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.5.2",
+    "rss-parser": "^3.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keenmaster486/retro-rss-reader.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keenmaster486/retro-rss-reader/issues"
+  },
+  "homepage": "https://github.com/keenmaster486/retro-rss-reader#readme"
+}

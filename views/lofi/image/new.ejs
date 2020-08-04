@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upload Image</title>
+	<% include ../partials/links %>
+</head>
+<%	include ../partials/bodytag	%>
+
+	<% include ../partials/header %>
+	<% include ../partials/menu %>
+
+	<h3>Image Uploader</h3>
+
+	<p>
+		Here you can upload an image to RetroHub. There is a file size limit of 2 MB.<br>
+		You can upload JPG, GIF, PNG, BMP, TIF, or ICO files, but the system will always<br>
+		convert it to a JPG file internally.<br>
+	</p>
+
+	<form action="/images/upload" method="POST" enctype="multipart/form-data">
+		<input type="hidden" name="MAX_FILE_SIZE" value="2097152"></input>
+		Upload image here:<br>
+		<input type="file" name="userimage" id="userimage"></input><br>
+		<input type="submit" value="Submit"></input>
+	</form>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Editing post <%=post.title%></title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+	<%	include ../partials/csslinks	%>
+</head>
+<body>
+
+	<% include ../partials/navbar %>
+	
+	<br><br><br><br>
+	<hr>
+
+	<div class="container">
+		<h2>Editing post <%=post.title%></h2>
+		<p>(all of the following fields are required)</p>
+
+		<form action="/posts/<%=post._id%>?_method=PUT" method="POST">
+			Title:<br>
+			<input type="text" name="title" placeholder="title" value="<%=post.title%>"></input><br>
+			Type:<br>
+			<select name="type">
+				<option value="Article">Article
+			</select><br>
+			Links to images to place at the top of this post (up to 10):
+			
+			Text body:<br>
+			<textarea name="text" rows=25 cols=75><%=post.text%></textarea><br>
+			<button type="submit">Submit</button><br>
+		</form>
+
+		<a href="/">Back to home</a>
+	</div>
+
+	<%	include ../partials/jslinks	%>
+
+</body>
+</html>

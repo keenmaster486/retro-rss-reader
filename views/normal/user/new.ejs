@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+	<%	include ../partials/csslinks	%>
+</head>
+<body>
+
+	<% include ../partials/navbar %>
+	
+	<br><br><br><br>
+
+	<div class="container">
+		<hr>
+
+		<h2>Register a new RetroHub user account</h2>
+
+		<form action="/users" method="POST">
+			Your username (unique, non-case-sensitive, should be all lowercase):<br>
+			<input type="text" name="username" placeholder="Username"></input><br>
+			Your email address (must be a valid email address):<br>
+			<input type="email" name="email" placeholder="Email"></input><br>
+			Your name (this will be the name that is displayed on your profile page):<br>
+			<input type="text" name="displayname" placeholder="Your name (display name)"></input><br>
+			Your password (for your own privacy, pick a strong password):<br>
+			<input type="password" name="password" placeholder="Password"></input><br>
+			Enter your password again, just to be sure:<br>
+			<input type="password" name="password2" placeholder="Password again"></input><br>
+			<button type="submit">Submit</button><br>
+		</form>
+
+		<a href="/">Back to home</a>
+	</div>
+
+
+	<%	include ../partials/jslinks	%>
+
+</body>
+</html>

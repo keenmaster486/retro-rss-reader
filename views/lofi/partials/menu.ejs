@@ -1,0 +1,39 @@
+<center>
+
+<div align="center" class="fixedsys">
+
+<table border=1 width="95%" width=620px>
+	<tr>
+		
+		<td align="center">
+			<font face="Fixedsys Excelsior 3.01, fixedsys, Courier New, monospace">
+				<a href="/">Home</a>
+			</font>
+
+		<% if (session.logged) { %>
+			<td align="center">
+				<font face="Fixedsys Excelsior 3.01, fixedsys, Courier New, monospace">
+					<a href="/feeds">Your Feeds</a>
+				</font>
+			<td align="center">
+				<font face="Fixedsys Excelsior 3.01, fixedsys, Courier New, monospace">
+					<a href="/auth/logout">Log Out</a>
+				</font>
+		<% } %>
+
+		<% if (!session.logged) { %>
+			<td align="center">
+				<font face="Fixedsys Excelsior 3.01, fixedsys, Courier New, monospace">
+					<a href="/users/new">Register</a>
+				</font>
+			<td align="center">
+				<font face="Fixedsys Excelsior 3.01, fixedsys, Courier New, monospace">
+					<a href="/auth/login">Log In</a>
+				</font>
+		<% } %>
+
+</table>
+
+</div>
+
+</center>
